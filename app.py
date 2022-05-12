@@ -12,7 +12,7 @@ def round_int(x):
     return int(round(x))
 
 
-@app.route("/mostrar-decciones", methods=['GET'])
+@app.route("/mostrar-detecciones", methods=['GET'])
 def detect():
     if not request.method == "GET":
         return "error"
@@ -31,7 +31,7 @@ def detect():
         detections = []
         for frame_number, im in enumerate(reader):
             # im is numpy array
-            if frame_number % 32 == 0:  # round(totalFrames*0.01)
+            if frame_number % 30 == 0:
                 result = model(im)
                 if(result.pandas().xyxy[0].size > 0):
                     detections.append(
